@@ -16,5 +16,11 @@
   "main": "index.js",
   "scripts": {
     "test": "test"
+  },
+  "dependencies": {
+    "puppeteer": "^24.8.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0"
   }
 }
