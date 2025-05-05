@@ -1,0 +1,20 @@
+{
+  "name": "test_automatizacion_ml",
+  "version": "1.0.0",
+  "description": "Este proyecto es de un test de automatización de la búsqueda y filtrado de productos en MercadoLibre México.",
+  "homepage": "https://github.com/umarespj/test_automatizacion_ML#readme",
+  "bugs": {
+    "url": "https://github.com/umarespj/test_automatizacion_ML/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umarespj/test_automatizacion_ML.git"
+  },
+  "license": "ISC",
+  "author": "Perla Jaqueline Umares Leal",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
