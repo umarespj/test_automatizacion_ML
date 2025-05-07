@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "cucumber-js"
   },
   "dependencies": {
     "puppeteer": "^24.8.0"
