@@ -18,7 +18,7 @@
     "test": "cucumber-js"
   },
   "dependencies": {
-    "puppeteer": "^24.8.0"
+    "puppeteer": "^24.8.2"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0"
