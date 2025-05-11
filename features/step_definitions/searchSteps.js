@@ -1,5 +1,4 @@
 // importar las dependencias necesarias
-
 const puppeteer = require('puppeteer');
 const { Given, When, Then } = require('@cucumber/cucumber');
 
@@ -20,7 +19,7 @@ Given('El usuario accedera a la pagina web de Mercado Libre', async function () 
     await page.goto('https://www.mercadolibre.com/');  
 
       // toma una captura de pantalla de la página
-    await page.screenshot({ path: `report/screenshots/portal_Mercado_Libre.png` });
+    await page.screenshot({ path: `report/screenshots/1_portal_Mercado_Libre.png` });
 
    } catch (error) {
       console.error("Error al iniciar el navegador:", error);
@@ -35,7 +34,7 @@ When('selecciona México como país', async function () {
          //localiza el elmento de la lista de paises y hace clic en el
          await page.locator('nav ul.ml-site-list li.ml-site-mlm').click();
          
-         await page.screenshot({ path: `report/screenshots/selecciona.png` });
+         await page.screenshot({ path: `report/screenshots/2_selecciona.png` });
 
    }catch (error) {
       console.error("Error al seleccionar el país:", error);
@@ -55,7 +54,7 @@ When('busca {string}', async function ( Producto) {
       // Localiza y hace clic en el botón de búsqueda
       await page.locator('button.nav-search-btn').click();
 
-      await page.screenshot({ path: `report/screenshots/InputConProducto.png` });
+      await page.screenshot({ path: `report/screenshots/3_InputConProducto.png` });
    }catch (error) {
       console.error("Error al realizar la busqueda:", error);
    }
@@ -71,7 +70,7 @@ try{
     await page.locator('.ui-search-filter-dl a[title^="'+condicionNuevo+'"]').click();
 
     // Captura de pantalla después de hacer clic
-    await page.screenshot({ path: `report/screenshots/filtro_condicion_nuevo.png` });
+    await page.screenshot({ path: `report/screenshots/4_filtro_condicion_nuevo.png`},{timeout: 10000});
 }catch (error) {
    console.error("Error al aplicar el filtro de condición:", error);
 }
@@ -85,14 +84,14 @@ When ('aplica el filtro de ubicación del producto "Cdmx"', async function () {
       // localica el filtro de ubicacion con titulo "Distrito Federal" y da clic en el
       await page.locator('.ui-search-filter-dl a[title^="Distrito Federal"]').click();
      
-      await page.screenshot({ path: `report/screenshots/filtroUbicacion.png` });
+      await page.screenshot({ path: `report/screenshots/5_filtroUbicacion.png` },{timeout: 10000});
 
    }catch (error) {
       console.error("Error al aplicar el filtro de ubicación:", error);
    }
 });
 
-When('ordena los resultados por precio de menor a mayor', { timeout: 20000 },async function () {
+When('ordena los resultados por precio de menor a mayor',async function () {
        
    try{ 
          await page.waitForNavigation({ waitUntil: 'networkidle2' });
@@ -106,7 +105,7 @@ When('ordena los resultados por precio de menor a mayor', { timeout: 20000 },asy
          // Hacer clic en la opción "Mayor precio"
          await page.click('li[data-key="price_desc"]');
 
-         await page.screenshot({ path: `report/screenshots/OrdenarResultados.png` });
+         await page.screenshot({ path: `report/screenshots/6_OrdenarResultados.png` },{timeout: 20000});
 
    }catch (error) {
       console.error("Error al ordenar los resultados por precio de mayor a menor:", error);
@@ -115,7 +114,7 @@ When('ordena los resultados por precio de menor a mayor', { timeout: 20000 },asy
  
 
 
-Then('obtener el nombre y el precio de los 5 primeros productos',{ timeout: 20000 }, async function () {
+Then('obtener el nombre y el precio de los 5 primeros productos', async function () {
 
    try{
       await page.waitForSelector('.ui-search-layout__item', { visible: true, timeout: 10000 });
@@ -130,10 +129,14 @@ Then('obtener el nombre y el precio de los 5 primeros productos',{ timeout: 2000
 
     });
    console.log("Primeros 5 productos:", productos); 
+
+ 
    }catch (error) {
       console.error("Error al obtener el nombre y el precio de los productos:", error);
+   }finally{
+      // Cierra el navegador después de obtener los resultados
+      await browser.close();
    }
- await browser.close();
 });
   
 
