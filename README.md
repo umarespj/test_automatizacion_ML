@@ -9,6 +9,14 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 - [npm](https://www.npmjs.com/) (incluido con Node.js)
 - Un navegador compatible (Puppeteer utiliza Chromium por defecto)
 
+### Documentación oficial:
+- **Cucumber.js**:
+  - [Documentación general](https://cucumber.io/docs/)
+  - [Guía de instalación](https://cucumber.io/docs/installation/javascript/)
+- **Puppeteer**:
+  - [Documentación general](https://pptr.dev/)
+  - [Guía de instalación](https://pptr.dev/getting-started)
+
 ## Configuración del proyecto
 
 1. **Clonar el repositorio:**
