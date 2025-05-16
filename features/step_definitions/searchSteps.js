@@ -1,4 +1,8 @@
-// importar las dependencias necesarias
+// Importar las dependencias necesarias
+/** //Esto se utiliza cuando la configuracion package.json esta en modo "type": "module"
+import puppeteer from 'puppeteer';
+import { Given, When, Then } from '@cucumber/cucumber';
+ */
 const puppeteer = require('puppeteer');
 const { Given, When, Then } = require('@cucumber/cucumber');
 
@@ -34,7 +38,7 @@ When('selecciona México como país', async function () {
          //localiza el elmento de la lista de paises y hace clic en el
          await page.locator('nav ul.ml-site-list li.ml-site-mlm').click();
          
-         await page.screenshot({ path: `report/screenshots/2_selecciona.png` });
+         await page.screenshot({ path: `report/screenshots/2_selecciona_Mexico.png` });
 
    }catch (error) {
       console.error("Error al seleccionar el país:", error);
@@ -54,7 +58,7 @@ When('busca {string}', async function ( Producto) {
       // Localiza y hace clic en el botón de búsqueda
       await page.locator('button.nav-search-btn').click();
 
-      await page.screenshot({ path: `report/screenshots/3_InputConProducto.png` });
+      await page.screenshot({ path: `report/screenshots/3_Ingresa_Producto_playstation_5.png` });
    }catch (error) {
       console.error("Error al realizar la busqueda:", error);
    }
@@ -67,7 +71,7 @@ try{
     await page.waitForSelector('.ui-search-filter-dl');
 
     //localiza el elemento de la lista de condiciones y hace clic en el
-    await page.locator('.ui-search-filter-dl a[title^="'+condicionNuevo+'"]').click();
+    await page.locator(`.ui-search-filter-dl a[title^="${condicionNuevo}"]`).click();
 
     // Captura de pantalla después de hacer clic
     await page.screenshot({ path: `report/screenshots/4_filtro_condicion_nuevo.png`},{timeout: 10000});
@@ -79,19 +83,22 @@ try{
 /** Importante: La Ciudad de México (CDMX) antes se llamaba Distrito Federal (D.F.),
  *  pero en 2016 cambió oficialmente su nombre a CDMX */
 
-When ('aplica el filtro de ubicación del producto "Cdmx"', async function () {
+When ('aplica el filtro de ubicación del producto {string}', async function (Ciudad) {
    try{
+     const tituloFiltro = Ciudad === "Cdmx" ? "Distrito Federal" : Ciudad;
+      // Espera a que el elemento de filtro de ubicación esté presente en el DOM y sea visible
+      await page.waitForSelector('.ui-search-filter-dl');
       // localica el filtro de ubicacion con titulo "Distrito Federal" y da clic en el
-      await page.locator('.ui-search-filter-dl a[title^="Distrito Federal"]').click();
+      await page.locator(`.ui-search-filter-dl a[title^="${tituloFiltro}"]`).click();
      
-      await page.screenshot({ path: `report/screenshots/5_filtroUbicacion.png` },{timeout: 10000});
+      await page.screenshot({ path: `report/screenshots/5_filtroUbicacion_${Ciudad}.png` },{timeout: 10000});
 
    }catch (error) {
       console.error("Error al aplicar el filtro de ubicación:", error);
    }
 });
 
-When('ordena los resultados por precio de menor a mayor',async function () {
+When('ordena los resultados por precio de mayor a menor',async function () {
        
    try{ 
          await page.waitForNavigation({ waitUntil: 'networkidle2' });
