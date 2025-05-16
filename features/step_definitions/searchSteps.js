@@ -135,6 +135,8 @@ Then('obtener el nombre y el precio de los 5 primeros productos', async function
         });
 
     });
+    
+    // Imprime los primeros 5 productos en la consola
    console.log("Primeros 5 productos:", productos); 
 
  
