@@ -5,5 +5,5 @@ Feature: Busqueda de PlayStation 5 en Mercado libre
                 And busca "playstation 5"
                 And aplica el filtro de condición del producto "Nuevo"
                 And aplica el filtro de ubicación del producto "Cdmx"
-                And ordena los resultados por precio de menor a mayor
+                And ordena los resultados por precio de mayor a menor
                 Then obtener el nombre y el precio de los 5 primeros productos
