@@ -15,7 +15,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
   - [Guía de instalación](https://cucumber.io/docs/installation/javascript/)
 - **Puppeteer**:
   - [Documentación general](https://pptr.dev/)
-  - [Guía de instalación](https://pptr.dev/getting-started)
+  - [Guía de instalación](https://pptr.dev/)
 
 ## Configuración del proyecto
 
